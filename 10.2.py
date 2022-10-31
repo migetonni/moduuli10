@@ -38,16 +38,36 @@ class talo:
     def __init__(self ,hissien_maara):
         self.ylinkerros = 8
         self.alinkerros = 1
+        self.kerros = 0
         self.hissien_maara = hissien_maara
         self.hissit = []
         for i in range (self.hissien_maara):
             self.hissit.append(hissi)
 
+    def kerros_ylos(self):
+        if self.kerros < self.ylinkerros:
+            self.kerros += 1
+
+    def kerros_alas(self):
+        if self.kerros > self.alinkerros:
+            self.kerros -= 1
+
+
+    def hissi_valitsin(self):
+        pass
+
+
+    def aja_hissia(self, kohdekerros,valittu_hissi):
+        if self.kerros < kohdekerros:
+            while self.kerros < kohdekerros:
+                self.kerros_ylos()
+        elif self.kerros > kohdekerros:
+            while self.kerros > kohdekerros:
+                self.kerros_alas()
 
 
 
 
-    def aja_hissia(self, kohdekerros, hissi_nro):
 
 
 
@@ -56,4 +76,4 @@ class talo:
 
 mixuntalo = talo(5)
 
-mixuntalo.aja_hissia(5 ,3)
+mixuntalo.aja_hissia(5, 3)
